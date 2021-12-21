@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory, createWebHistory, RouteRecordRaw } from "vue-router";
 import Home from "@/views/Home.vue";
 import Login from "@/views/Login.vue"
+import NProgress from 'nprogress'
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,5 +29,8 @@ const router = createRouter({
   history: createWebHashHistory(),
   routes,
 });
+
+router.beforeEach(() => { NProgress.start() })
+router.afterEach(() => { NProgress.done() })
 
 export default router;
